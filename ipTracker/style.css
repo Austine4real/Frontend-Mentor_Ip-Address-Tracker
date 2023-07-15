@@ -156,5 +156,8 @@ header { flex-shrink: 0; }
   .search-result > * { padding: 0 1rem; }
   .search-result > * + * { border-left: 1px solid var(--dark-gray); }
 }
+.error-color {
+  color: red;
+}
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }

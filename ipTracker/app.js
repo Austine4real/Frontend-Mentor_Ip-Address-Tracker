@@ -3,6 +3,7 @@ const myIpAddr = document.querySelector('.ip-addr h2');
 const myLocation = document.querySelector('.location h2');
 const myTimezone = document.querySelector('.timezone h2');
 const myIsp = document.querySelector('.isp h2');
+const errorMessage = document.querySelector('.error-message');
 // Map creation
 const myMap = L.map('myMap').setView([51.505, -0.09], 13);
 
@@ -13,7 +14,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const myIcon = L.icon({
   iconUrl: './images/icon-location.svg',
   iconSize: [40, 50],
-  iconAnchor: [20, 50]
+  iconAnchor: [20, 50] 
 });
 
 let myMarker;
@@ -28,8 +29,8 @@ const mapDisplay = (lat, lng) => {
 
 // Get the info the page needs
 const getData = (inputValue = '', searchType = 'IP') => {
-//   const apiKey = 'at_E6BD5wm4eWkq0e3q9TyyAmGNH165p'; // Replace with your actual API key
-  const apiKey = 'at_mrynU6iAELbDDua1k4TVs9OdIU59f'; // Replace with your actual API key
+
+  const apiKey = 'at_mrynU6iAELbDDua1k4TVs9OdIU59f'; 
 
   const url =
     searchType === 'IP'
@@ -75,12 +76,19 @@ myForm.addEventListener('submit', (e) => {
   if (myInput.value.match(regexDomain)) {
     getData(myInput.value, 'DOMAIN');
   }
-
+  
   if (!myInput.value.match(regexDomain) && !myInput.value.match(regexIp)) {
     myInput.classList.add('error');
+    
+    errorMessage.textContent = 'Invalid input. Please enter a valid IP address or domain name.';
+    errorMessage.style.display = 'block';
 
-    setTimeout(() => myInput.classList.remove('error'), 3000);
-  }
+    setTimeout(() => {
+        myInput.classList.remove('error');
+        errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
+    }, 3000);
+}
 
   myInput.value = ''; 
 });

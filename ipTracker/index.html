@@ -12,15 +12,17 @@
   crossorigin="" />
 </head>
 <body>
+  <script src="app.js" defer></script>
   <header>
     <div class="container">
       <h1>IP Address Tracker</h1>
       <form>
-        <input type="text" name="searchInput" placeholder="Search for any IP address or domain">
+        <input type="text" name="searchInput" placeholder="Search for any IP address or domain" id="myInput">
         <button>
           <img src="images/icon-arrow.svg" alt="Submit"  />
         </button>
       </form>
+      <p class="error-message error-color"></p>
       <div class="search-result">
         <div class="ip-addr">
           <span>IP Address</span>
@@ -48,6 +50,6 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin="">
   </script>
-  <script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
 </body>
 </html>
